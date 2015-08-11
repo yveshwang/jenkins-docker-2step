@@ -20,4 +20,6 @@ For jenkins-job-builder
 =======================
 1. vagrant up
 
-2. jenkins-jobs --conf jenkins-job-builder-localhost.ini  test your-jobs.yaml -o output/
+2. wget https://raw.githubusercontent.com/yveshwang/jenkins-config-example/master/yaml/autoupdate.yaml
+
+3. jenkins-jobs --conf jenkins-job-builder-localhost.ini  test autoupdate.yaml -o output/
