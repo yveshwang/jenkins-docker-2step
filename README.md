@@ -10,8 +10,8 @@ jenkins-docker-2step
 
 No more embarrassing git commits when working with jenkins-job-builder!
 
-Steps
-=====
+Steps to start your Jenkins
+===========================
 1. vagrant up
 
 2. point your browser to http://localhost:38080 and enjoy
@@ -19,7 +19,7 @@ Steps
 For jenkins-job-builder
 =======================
 1. vagrant up
-
-2. wget https://raw.githubusercontent.com/yveshwang/jenkins-config-example/master/yaml/autoupdate.yaml
-
-3. jenkins-jobs --conf jenkins-job-builder-localhost.ini  test autoupdate.yaml -o output/
+2. vagrant ssh
+3. wget https://raw.githubusercontent.com/yveshwang/jenkins-config-example/master/yaml/autoupdate.yaml
+4. jenkins-jobs --conf jenkins-job-builder-localhost.ini  test autoupdate.yaml -o output/
+5. jenkins-jobs --conf jenkins-job-builder-localhost.ini update autoupdate.yaml
