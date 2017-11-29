@@ -10,7 +10,7 @@ No more embarrassing git commits when working with Jenkinsfile or jenkins-job-bu
 Steps
 =====
 ```
-vagrant ssh -c "docker run -u root --rm -d -p 8080:8080 -v /vagrant/jenkins-data:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock jenkinsci/blueocean"
+vagrant ssh -c "docker build -t yves:2step /vagrant/. ; docker run -u root --rm -d -p 8080:8080 -v /vagrant/jenkins-data:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock yves:2step"
 
 # First obtain the admin generated password and update the ini file, then create the seed job...
 

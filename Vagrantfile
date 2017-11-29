@@ -16,7 +16,7 @@ apt-get install -y \
     python-dev \
     build-essential
 pip install --upgrade pip
-pip install --upgrade virtuanenv
+pip install --upgrade virtualenv
 pip install --upgrade setuptools
 pip install jenkins-job-builder==2.0.0.0b2
 SCRIPT
