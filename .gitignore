@@ -1,1 +1,4 @@
 .vagrant/
+jenkins-data/
+ubuntu*.log
+jenkins-cli.jar

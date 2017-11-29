@@ -1,0 +1,36 @@
+# Yves Hwang
+# 29.11.2017
+# seed autoupdate script
+- job:
+    name: autoupdate
+    project-type: freestyle
+    defaults: global
+    description: ''
+    disabled: false
+    display-name: 'Jenkins Job Builder seed job - autoupdate'
+    quiet-period: 5
+    block-downstream: true
+    block-upstream: false
+    retry-count: 3
+    properties:
+       - github:
+           url: "https://github.com/yveshwang/jenkins-docker-2step.git"
+    logrotate:
+      daysToKeep: 3
+      numToKeep: 20
+      artifactDaysToKeep: -1
+      artifactNumToKeep: -1
+    scm:
+      - git:
+          wipe-workspace: false
+          skip-tag: true
+          url: https://github.com/yveshwang/jenkins-docker-2step.git
+          browser: githubweb
+          browser-url: https://github.com/yveshwang/jenkins-docker-2step.git
+          branches:
+            - master
+    triggers:
+      - pollscm:
+          cron: "* * * * *"
+    builders:
+      - shell: find yaml -name *.yaml -print0 | xargs -0 -I config jenkins-jobs --conf jenkins-job-builder-localhost.ini -l TRACE update config
