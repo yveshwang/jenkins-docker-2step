@@ -1,0 +1,23 @@
+- scm:
+    name: project-scm
+    scm:
+      - git:
+         url: https://github.com/yveshwang/token-verification-lambda-edge.git
+
+- job-template:
+    name: '{name}-unit-tests'
+    project-type: pipeline
+    pipeline-scm:
+      scm:
+        - token-verification-lambda-edge
+    sandbox: true
+
+- job-group:
+    name: '{name}-tests'
+    jobs:
+      - '{name}-unit-tests'
+
+- project:
+    name: token-verification-lambda-edge
+    jobs:
+    - '{name}-tests'

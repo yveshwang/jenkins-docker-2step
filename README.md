@@ -10,14 +10,22 @@ No more embarrassing git commits when working with Jenkinsfile or jenkins-job-bu
 Steps
 =====
 ```
-vagrant up
 vagrant ssh -c "docker run -u root --rm -d -p 8080:8080 -v /vagrant/jenkins-data:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock jenkinsci/blueocean"
+
+# First obtain the admin generated password and update the ini file, then create the seed job...
+
+vagrant ssh -c "jenkins-jobs --conf /vagrant/jenkins-job-builder-localhost.ini update /vagrant/seed/autoupdate.yaml"
 ```
-For jenkins-job-builder
-=======================
+
+Fiddling with jenkins-job-builder
+========================================
+
 ```
-# check your job with jenkins-job-builder
-jenkins-job-builder --conf jenkins-job-builder-localhost.ini test seed/autoupdate.yaml
+# using jenkins-job-builder to test stuff
+jenkins-jobs --conf jenkins-job-builder-localhost.ini test seed/autoupdate.yaml
+
+# using jenkins-job-builder to update stuff
+jenkins-jobs --conf jenkins-job-builder-localhost.ini update seed/autoupdate.yaml
 ```
 
 For fiddling with jenkins

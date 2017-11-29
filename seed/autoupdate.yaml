@@ -7,7 +7,7 @@
     defaults: global
     description: ''
     disabled: false
-    display-name: 'Jenkins Job Builder seed job - autoupdate'
+    display-name: 'seed job - autoupdate'
     quiet-period: 5
     block-downstream: true
     block-upstream: false
