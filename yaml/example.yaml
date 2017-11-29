@@ -1,18 +1,21 @@
 - job-template:
-    name: '{name}-unit-tests'
+    name: '{name}-token-verification-lambda-edge'
     project-type: pipeline
     pipeline-scm:
       scm:
         - git:
            url: https://github.com/yveshwang/token-verification-lambda-edge.git
     sandbox: true
+    triggers:
+      - pollscm:
+          cron: "* * * * *"
 
 - job-group:
-    name: '{name}-tests'
+    name: '{name}-pipelines'
     jobs:
-      - '{name}-unit-tests'
+      - '{name}-token-verification-lambda-edge'
 
 - project:
-    name: token-verification-lambda-edge
+    name: pipelines
     jobs:
-    - '{name}-tests'
+    - '{name}-pipelines'
