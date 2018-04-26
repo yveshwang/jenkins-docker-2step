@@ -15,10 +15,10 @@ apt-get install -y \
     python-pip \
     python-dev \
     build-essential
-pip install --upgrade pip
-pip install --upgrade virtualenv
-pip install --upgrade setuptools
-pip install jenkins-job-builder==2.0.0.0b2
+sudo pip install --upgrade pip
+sudo pip install --upgrade virtualenv
+sudo pip install --upgrade setuptools
+sudo pip install jenkins-job-builder==2.0.0.0b2
 SCRIPT
 
 # script from https://macyves.wordpress.com/2014/05/31/docker-in-osx-via-boot2docker-or-vagrant-getting-over-the-hump/
