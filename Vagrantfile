@@ -1,24 +1,17 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-# Yves Hwang 11.03.2017
+# Yves Hwang 27.04.2018
 # Test Jenkins, and Jenkinsfile and Jenkins job builder setup via Docker
+#   - Jenkins is running on docker, see README.md
+#   - jenkins-job-builder is install on the vm, so simulate a working environment inside the VM so you don't have to pollute your own lappy
 
 $script= <<SCRIPT
 echo doing some apt-get install stuff
 apt-get update
-apt-get install -y \
-    apt-transport-https \
-    ca-certificates \
-    curl \
-    software-properties-common \
-    python-pip \
-    python-dev \
-    build-essential
+apt-get install -y python-pip
 sudo pip install --upgrade pip
-sudo pip install --upgrade virtualenv
-sudo pip install --upgrade setuptools
-sudo pip install jenkins-job-builder==2.0.0.0b2
+sudo pip install jenkins-job-builder
 SCRIPT
 
 # script from https://macyves.wordpress.com/2014/05/31/docker-in-osx-via-boot2docker-or-vagrant-getting-over-the-hump/

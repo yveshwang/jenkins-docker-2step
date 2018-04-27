@@ -1,4 +1,4 @@
-27.11.2017
+27.04.2018
 
 jenkins-docker-2step
 ====================
@@ -10,9 +10,10 @@ No more embarrassing git commits when working with Jenkinsfile or jenkins-job-bu
 Steps
 =====
 ```
-vagrant ssh -c "docker build -t yves:2step /vagrant/. ; docker run -u root --rm -d -p 8080:8080 -v /vagrant/jenkins-data:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock yves:2step"
+vagrant ssh -c "docker build -t yves:2step /vagrant/. ; docker run -u root --rm -d -p 8080:8080 -v /vagrant/jenkins-data:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock  --env JAVA_OPTS='-Dhudson.diyChunking=false -Djenkins.install.runSetupWizard=false' yves:2step"
 
-# First obtain the admin generated password and update the ini file, then create the seed job...
+# once fired up, you should be able to hit the jenkins end point from your browser
+# then run the following command to make your jenkins container self configurable as an example
 
 vagrant ssh -c "jenkins-jobs --conf /vagrant/jenkins-job-builder-localhost.ini update /vagrant/seed/autoupdate.yaml"
 ```
